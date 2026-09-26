@@ -1,0 +1,13 @@
+# CMake-generated files
+build/
+build-release/
+cmake-build-*/
+
+# Compiled files
+*.o
+*.out
+chess
+
+# Editor settings
+.vscode/
+.idea/
