@@ -9,6 +9,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_executable(chess
     src/main.cpp
     src/board.cpp
+    src/moves.cpp
 )
 
 target_include_directories(chess PRIVATE include)
