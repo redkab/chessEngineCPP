@@ -1,5 +1,6 @@
 #pragma once
-
+#include<utility>
+#include "move.hpp"
 class Board
 {
     private:
@@ -15,4 +16,8 @@ class Board
         char getPiece(int row, int col);
         void setPiece(int row, int col, char piece);
         int sgn(int x);
+        bool isTeam(std::pair<int, int>a, std::pair<int, int>b);
+        bool isValidKnightMove(Move m);
+        bool isBlack(std::pair<int, int>s);
+        bool isWhite(std::pair<int, int>s);
 };

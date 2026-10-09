@@ -1,5 +1,4 @@
 #include "board.hpp"
-
 #include<iostream>
 using namespace std;
 
@@ -71,5 +70,29 @@ int Board::sgn(int x)//priv
     return (x>0) - (x<0);
 }
 
+bool Board::isBlack(pair<int, int>s)
+{
+    char c = b[s.first][s.second];
+    return c>='a' && c<='z';
+}
+
+bool Board::isWhite(pair<int, int>s)
+{
+    return !isBlack(s);
+}
+
+bool Board::isTeam(pair<int, int>a, pair<int, int>b)
+{
+    if(isBlack(a) && isBlack(b))return 1;
+    if(isWhite(a) && isWhite(b))return 1;
+    return 0;
+}
 
 
+bool Board::isValidKnightMove(Move m)
+{
+    int sr = m.sr, sc = m.sc, er = m.er, ec = m.ec;
+    if(isTeam({sr, sc}, {er, ec}))return 0;
+    return (abs(sr-er)==2 && abs(sc-ec)==1) || (abs(sr-er)==1 && abs(sc-ec)==2);
+}
+    
