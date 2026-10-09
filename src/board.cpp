@@ -36,7 +36,7 @@ void Board::print()
         cout<<8-i<<"  ";
         for(int j=0; j<8; j++)
         {
-            cout<<b[i][j]<<'.';
+            cout<<b[i][j]<<' ';
         }
         cout<<'\n';
     }
