@@ -95,4 +95,15 @@ bool Board::isValidKnightMove(Move m)
     if(isTeam({sr, sc}, {er, ec}))return 0;
     return (abs(sr-er)==2 && abs(sc-ec)==1) || (abs(sr-er)==1 && abs(sc-ec)==2);
 }
+
+bool Board::isValidBishopMove(Move m)
+{
+    int sr = m.sr, sc = m.sc, er = m.er, ec = m.ec;
+    if(!(abs(sr-er) == abs(sc-ec)))return 0;
+    if(sr == er && sc == ec)return 0;
+    int dr = er-sr;
+    int dc = ec-sc;
+    int delr = sgn(dr);
+    int delc = sgn(dc);
+}
     
