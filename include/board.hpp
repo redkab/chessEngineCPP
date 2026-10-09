@@ -14,4 +14,5 @@ class Board
         bool isEmpty(int row, int col);
         char getPiece(int row, int col);
         void setPiece(int row, int col, char piece);
+        int sgn(int x);
 };
