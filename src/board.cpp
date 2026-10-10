@@ -105,5 +105,15 @@ bool Board::isValidBishopMove(Move m)
     int dc = ec-sc;
     int delr = sgn(dr);
     int delc = sgn(dc);
+    int r, c;
+    r = sr + delr;
+    c = sc + delc;
+    while(r != er || c != ec)
+    {
+        if(b[r][c] != '.')return 0;
+        r+=delr;
+        c+=delc;
+    }
+    return !isTeam({sr, sc}, {er, ec}) || b[er][ec] == '.';
 }
     
