@@ -78,7 +78,8 @@ bool Board::isBlack(pair<int, int>s)
 
 bool Board::isWhite(pair<int, int>s)
 {
-    return !isBlack(s);
+    char c = b[s.first][s.second];
+    return c>='A' && c<= 'Z';
 }
 
 bool Board::isTeam(pair<int, int>a, pair<int, int>b)
@@ -116,4 +117,43 @@ bool Board::isValidBishopMove(Move m)
     }
     return !isTeam({sr, sc}, {er, ec}) || b[er][ec] == '.';
 }
-    
+
+bool Board::isValidRookMove(Move m)
+{
+    int sr = m.sr, sc = m.sc, er = m.er, ec = m.ec;
+    if(!(sr==er || sc==ec))return 0;
+    if(sr==er && sc==ec)return 0;
+    int dr, dc;
+    if(sr==er)
+    {
+        dc = sgn(ec-sc);
+        dr=0;
+    }
+    else
+    {
+        dr = sgn(er-sr);
+        dc=0;
+    }
+
+    int r=sr+dr, c = sc+dc;
+    while(!(r==er && c==ec))
+    {
+        if(b[r][c] != '.')return 0;
+        r+=dr;
+        c+=dc;
+    }
+    return !isTeam({sr, sc}, {er, ec}) || b[er][ec] == '.';
+}
+
+bool Board::isValidQueenMove(Move m)
+{
+    return isValidBishopMove(m) || isValidRookMove(m);
+}
+
+bool Board::isValidKingMove(Move m)
+{
+    int sr = m.sr, sc = m.sc, er = m.er, ec = m.ec;
+    if(!(abs(er-sr)<=1 && abs(ec-sc)<=1))return 0;
+    if(sr==er && sc==ec)return 0;
+    return !isTeam({sr, sc}, {er, ec}) || b[er][ec] == '.';
+}

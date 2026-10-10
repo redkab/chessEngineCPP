@@ -21,4 +21,7 @@ class Board
         bool isBlack(std::pair<int, int>s);
         bool isWhite(std::pair<int, int>s);
         bool isValidBishopMove(Move m);
+        bool isValidRookMove(Move m);
+        bool isValidQueenMove(Move m);
+        bool isValidKingMove(Move m);
 };
